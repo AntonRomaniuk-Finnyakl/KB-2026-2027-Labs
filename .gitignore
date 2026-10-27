@@ -224,3 +224,6 @@ __pycache__/
 *.pyc
 labs/lab01/data/*.csv
 labs/lab01/data/*.json
+# JetBrains
+.idea/
+labs/lab02/data/ssl_expiry_report.*
