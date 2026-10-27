@@ -6,6 +6,10 @@ import argparse
 import logging
 import sys
 from datetime import timedelta
+from pathlib import Path
+
+if __package__ in (None, ""):  # запуск напряму (кнопка ▶ або python main.py)
+    sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
 from labs.lab02 import task2
 from labs.lab02.task1 import SESSION_TIMEOUT_SEC, Admin, AuditLog, User, UserAccount
@@ -71,7 +75,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="labs.lab02.main", description=f"ЛР №2 (варіант {VARIANT})"
     )
-    sub = parser.add_subparsers(dest="command", required=True)
+    sub = parser.add_subparsers(dest="command")
     sub.add_parser("demo", help="демонстрація Завдання 1")
     p_analyze = sub.add_parser(
         "analyze", help="Завдання 2: монітор SSL/TLS сертифікатів"
@@ -84,7 +88,7 @@ def main(argv: list[str] | None = None) -> int:
     """Розібрати аргументи та виконати команду."""
     logging.basicConfig(level=logging.INFO, format="[%(levelname)s] %(message)s")
     args = build_parser().parse_args(argv)
-    if args.command == "demo":
+    if args.command in (None, "demo"):
         return demo()
     return task2.run(args)
 
