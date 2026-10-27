@@ -227,3 +227,5 @@ labs/lab01/data/*.json
 # JetBrains
 .idea/
 labs/lab02/data/ssl_expiry_report.*
+
+.vscode/
