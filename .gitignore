@@ -229,3 +229,8 @@ labs/lab01/data/*.json
 labs/lab02/data/ssl_expiry_report.*
 
 .vscode/
+
+labs/lab03/data/*.sqlite3
+labs/lab03/data/*.sqlite3-*
+labs/lab03/data/*.db
+labs/lab03/data/*.db-*
